@@ -6,13 +6,16 @@ directive('nsaAutoComplete',function()
 				scope : {source : '='},
 				link : function(scope,element,attrib)
 				{
-					element.autocomplete({
-						source: scope.source,
-						messages: {
-						noResults: '',
-						results: function() {}
+					scope.$watch('source',function(newVal,OldVal)
+					{
+						element.autocomplete({
+							source: newVal,
+							messages: {
+							noResults: '',
+							results: function() {}
 								}
-						});
+							});
+					}
 				}
 			}
 }
